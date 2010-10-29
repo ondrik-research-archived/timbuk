@@ -520,7 +520,6 @@ sig
   val get_norm_rules : gamma_content -> norm_rule list
   val set_norm_rules : norm_rule list -> gamma_content -> gamma_content
   val get_equations : gamma_content -> equation list
-  val get_equations : gamma_content -> equation list
   val set_equations : equation list -> gamma_content -> gamma_content
   val equations_to_string : equation list -> string
   val norm_rules_to_string:  norm_rule list -> string
@@ -531,7 +530,6 @@ sig
   val eq_lhs : equation -> term
   val eq_rhs : equation -> term
   val new_norm_rule : transition -> transition_table -> norm_rule
-  val get_new_states : gamma_content -> alphabet
 
   val static_norm : transition_table -> norm_rule list -> (transition list * rhs_table)
   val const_find : variable list -> sol_filt -> (variable * term) list
