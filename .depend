@@ -1,0 +1,49 @@
+symbol.cmo: symbol.cmi 
+symbol.cmx: symbol.cmi 
+variable.cmo: variable.cmi 
+variable.cmx: variable.cmi 
+alphabet.cmo: common.cmo alphabet.cmi 
+alphabet.cmx: common.cmx alphabet.cmi 
+variable_set.cmo: common.cmo variable_set.cmi 
+variable_set.cmx: common.cmx variable_set.cmi 
+term.cmo: common.cmo variable.cmi variable_set.cmi term.cmi 
+term.cmx: common.cmx variable.cmx variable_set.cmx term.cmi 
+state_set.cmo: common.cmo term.cmi state_set.cmi 
+state_set.cmx: common.cmx term.cmx state_set.cmi 
+rewrite.cmo: common.cmo rewrite.cmi 
+rewrite.cmx: common.cmx rewrite.cmi 
+automaton.cmo: common.cmo automaton.cmi 
+automaton.cmx: common.cmx automaton.cmi 
+specification.cmo: common.cmo specification.cmi 
+specification.cmx: common.cmx specification.cmi 
+gamma.cmo: common.cmo gamma.cmi 
+gamma.cmx: common.cmx gamma.cmi 
+main.cmo: alphabet.cmi automaton.cmi completion.cmo gamma.cmi rewrite.cmi \
+    specification.cmi state_content.cmo state_set.cmi symbol.cmi term.cmi \
+    variable.cmi variable_set.cmi 
+main.cmx: alphabet.cmx automaton.cmx completion.cmx gamma.cmx rewrite.cmx \
+    specification.cmx state_content.cmx state_set.cmx symbol.cmx term.cmx \
+    variable.cmx variable_set.cmx 
+alphabet.cmi: common.cmo 
+variable_set.cmi: common.cmo 
+term.cmi: common.cmo 
+state_set.cmi: common.cmo 
+rewrite.cmi: common.cmo 
+automaton.cmi: common.cmo 
+specification.cmi: common.cmo 
+gamma.cmi: common.cmo 
+gest.cmo: alphabet.cmi automaton.cmi common.cmo gamma.cmi rewrite.cmi \
+    specification.cmi specifs.cmo state_content.cmo state_set.cmi symbol.cmi \
+    term.cmi variable.cmi variable_set.cmi 
+gest.cmx: alphabet.cmx automaton.cmx common.cmx gamma.cmx rewrite.cmx \
+    specification.cmx specifs.cmx state_content.cmx state_set.cmx symbol.cmx \
+    term.cmx variable.cmx variable_set.cmx 
+cotes.cmo: gest.cmo specifs.cmo 
+cotes.cmx: gest.cmx specifs.cmx 
+evts.cmo: cotes.cmo gest.cmo specifs.cmo visu.cmo evts.cmi 
+evts.cmx: cotes.cmx gest.cmx specifs.cmx visu.cmx evts.cmi 
+visu.cmo: cotes.cmo evts.cmi gest.cmo specifs.cmo 
+visu.cmx: cotes.cmx evts.cmx gest.cmx specifs.cmx 
+main-tabi.cmo: cotes.cmo evts.cmi gest.cmo visu.cmo 
+main-tabi.cmx: cotes.cmx evts.cmx gest.cmx visu.cmx 
+evts.cmi: specifs.cmo 
