@@ -51,7 +51,7 @@ open Gamma
 open Specification
 open Completion
 
-ifdef TABI then open Visu 
+IFDEF TABI THEN open Visu END
 (* ifdef TABI then open Specifs *)
 
 (* module instanciation *)
@@ -88,10 +88,11 @@ let automaton_printer ff a= Format.fprintf ff "%s@." (Automaton.to_string a)
 let approximation_printer ff a= Format.fprintf ff "%s@." (Gamma.to_string a)
 let specification_printer ff s= Format.fprintf ff "%s@." (Specification.to_string s)
 
-ifdef TABI then
+IFDEF TABI THEN
   let browse (a: Automaton.t)=  let _= Visu.tabi_call (Completion.convert_automaton a) in ()
-else
+ELSE
   let browse (a: Automaton.t)= print_string "Tabi not installed...\n" 
+END
 
 
 
