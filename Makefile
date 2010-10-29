@@ -20,13 +20,13 @@
 
 # From ocaml 3.03 stream parsing is no longer built-in
 PREPROC=  -pp "camlp4o" 
-PREPROCTABI=  -pp "camlp4o pa_ifdef.cmo -DTABI" 
-PREPROCNOTABI=  -pp "camlp4o pa_ifdef.cmo -UTABI" 
+PREPROCTABI=  -pp "camlp4o pa_macro.cmo -DTABI"
+PREPROCNOTABI=  -pp "camlp4o pa_macro.cmo -UTABI"
 
 # For ocaml 3.02 and lower stream parsers are builtins 
 # PREPROC=  
-# PREPROCTABI=  -pp "camlp4o pa_ifdef.cmo -DTABI" 
-# PREPROCNOTABI=  -pp "camlp4o pa_ifdef.cmo -UTABI" 
+# PREPROCTABI=  -pp "camlp4o pa_macro.cmo -DTABI"
+# PREPROCNOTABI=  -pp "camlp4o pa_macro.cmo -UTABI"
 
 
 ################################################################################
