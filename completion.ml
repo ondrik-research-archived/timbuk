@@ -59,8 +59,8 @@
 *) 
 
 open Common
-ifdef TABI then open Visu
-ifdef TABI then open Specifs
+IFDEF TABI THEN open Visu END
+IFDEF TABI THEN open Specifs END
 
 module Completion    
   (Variable : PRINTABLE_TYPE)
@@ -218,7 +218,7 @@ struct
 
   (* automaton conversion for Tabi *)
 
-  ifdef TABI then
+  IFDEF TABI THEN
 let rec convert_config (t: term): Specifs.simple_term=
   (match t with 	  
   | Common.Special(t) -> (State (Term.to_string t))
@@ -226,24 +226,28 @@ let rec convert_config (t: term): Specifs.simple_term=
   | Common.Const(a) -> (Node ((Symbol.to_string a), []))
   | _ -> failwith "No constants nor variables in configurations!")
 and convert_l_config (lt: term list): Specifs.simple_term list= List.map convert_config lt
+  END
 
-  ifdef TABI then
+  IFDEF TABI THEN
 let convert_transition (trans: TRS.rule): Specifs.transition=
   ((convert_config (TRS.lhs trans)),(convert_config (TRS.rhs trans)))
+  END
   
-  ifdef TABI then 
+  IFDEF TABI THEN 
 let rec convert_state_set (sts: State_set.t): string list=
   if State_set.is_empty sts then []
   else 
     let first= State_set.first sts in
     let rem= State_set.remainder sts in
     (Term.to_string first)::(convert_state_set rem)
+  END
 			
-  ifdef TABI then
+  IFDEF TABI THEN
 let convert_automaton (aut: automaton): Specifs.automaton=
   {q= convert_state_set (Automaton.get_states aut);
    f= convert_state_set (Automaton.get_final_states aut);
    t= List.map convert_transition (TRS.to_list (Automaton.get_transitions aut))}
+  END
 
 
 
@@ -2756,7 +2760,7 @@ let convert_automaton (aut: automaton): Specifs.automaton=
 		    menu (new_cs::lcs)
 		  end
 	    | 'b' -> 
-		(ifdef TABI then
+		(IFDEF TABI THEN
 		   let merge= Visu.tabi_call (convert_automaton (get_automaton_from_completion_step (List.hd lcs))) in
 		     if merge="." then menu lcs
 		     else 
@@ -2766,12 +2770,12 @@ let convert_automaton (aut: automaton): Specifs.automaton=
 			   Gamma.reinit_epsilon();
 			   menu (new_cs::lcs)
 			 end
-	        else
+	        ELSE
 		  begin
 		    Printf.fprintf !out_chan "%s" "Tabi is not installed!\n\n";
 		    flush !out_chan;
 		    menu lcs
-		  end)
+		  end END)
 	    | 's' ->  
 		begin
 		  Printf.fprintf !out_chan "%s"
