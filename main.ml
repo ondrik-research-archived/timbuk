@@ -110,7 +110,7 @@ module MyComp = Completion(Variable)(Symbol)(MyF)(MyX)(Myterm)(Mytrs)(MyQ)(Myaut
 
 let new_gc_control= {Gc.minor_heap_size=32768; Gc.major_heap_increment=63488;
  Gc.space_overhead=42; Gc.verbose=0; Gc.max_overhead=10;
- Gc.stack_limit=262144};;
+ Gc.stack_limit=262144;Gc.allocation_policy=0};;
 Gc.set new_gc_control;;
 
 
